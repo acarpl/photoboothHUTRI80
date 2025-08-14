@@ -13,45 +13,23 @@
             border-radius: 15px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
         }
-        
         .decoration {
             position: absolute;
             z-index: 10;
         }
-        
-        .merah-putih {
-            background: linear-gradient(180deg, #e70000 50%, #ffffff 50%);
-        }
-        
-        .capture-animation {
-            animation: flash 0.5s;
-        }
-        
+        .capture-animation { animation: flash 0.5s; }
         @keyframes flash {
             0% { opacity: 0.5; }
             50% { opacity: 1; }
             100% { opacity: 0.5; }
         }
-        
-        .sticker {
-            position: absolute;
-            cursor: grab;
-            user-select: none;
-            transition: transform 0.1s;
-        }
-        
-        .sticker:active {
-            cursor: grabbing;
-        }
-        
-        #videoElement {
-            transform: scaleX(-1);
-        }
+        .sticker { position: absolute; cursor: grab; user-select: none; transition: transform 0.1s; }
+        .sticker:active { cursor: grabbing; }
+        #videoElement { transform: scaleX(-1); }
     </style>
 </head>
 <body class="bg-gray-100 min-h-screen">
     <div class="container mx-auto px-4 py-8">
-        <!-- Header -->
         <header class="text-center mb-8">
             <h1 class="text-4xl font-bold text-red-600 mb-2">PhotoBooth</h1>
             <h2 class="text-2xl font-semibold text-gray-800">HUT Republik Indonesia ke-80</h2>
@@ -61,28 +39,14 @@
             </div>
         </header>
 
-        <!-- Main Content -->
         <main class="flex flex-col lg:flex-row gap-8">
-            <!-- Camera Section -->
             <div class="w-full lg:w-2/3">
-                <div class="photo-frame merdeka-frame bg-white p-4 relative">
+                <div class="photo-frame bg-white p-4 relative">
                     <div id="cameraContainer" class="relative overflow-hidden rounded-lg">
                         <video id="videoElement" autoplay playsinline class="w-full h-auto rounded-lg"></video>
                         <canvas id="canvasElement" class="hidden"></canvas>
                         <div id="photoResult" class="hidden"></div>
-                        
-                        <!-- Frame Decorations -->
-                        <div class="decoration top-0 left-0 w-full h-4 bg-red-600"></div>
-                        <div class="decoration bottom-0 left-0 w-full h-4 bg-white border-t border-gray-300"></div>
-                        <div class="decoration top-4 left-4 w-16 h-16">
-                            <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Bendera kecil" class="w-full h-full object-contain">
-                        </div>
-                        <div class="decoration bottom-4 right-4 text-white bg-red-600 px-3 py-1 rounded-full text-sm font-bold">
-                            HUT RI ke-80
-                        </div>
                     </div>
-                    
-                    <!-- Controls -->
                     <div class="flex justify-center mt-6 space-x-4">
                         <button id="captureBtn" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all">
                             <i class="fas fa-camera mr-2"></i> Ambil Foto
@@ -92,30 +56,23 @@
                         </button>
                     </div>
                 </div>
-                
-                <!-- Photo Gallery -->
                 <div id="gallery" class="mt-8">
                     <h3 class="text-xl font-semibold mb-4 text-gray-800">Galeri Foto</h3>
-                    <div id="photoGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4">
-                        <!-- Photos will be added here dynamically -->
-                    </div>
+                    <div id="photoGrid" class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4"></div>
                 </div>
             </div>
-            
-            <!-- Stickers Panel -->
+
             <div class="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-lg">
                 <h3 class="text-xl font-semibold mb-4 text-gray-800">Stiker Kemerdekaan</h3>
                 <p class="text-gray-600 mb-4">Tambahkan stiker ke foto Anda untuk merayakan HUT RI ke-80!</p>
-                
                 <div class="grid grid-cols-3 gap-3">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Garuda_Pancasila.svg" alt="Garuda" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" alt="Bendera" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Garuda_Pancasila.svg" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
                     <div class="sticker-option h-20 w-20 flex items-center justify-center bg-red-600 text-white text-4xl cursor-pointer p-2 hover:bg-red-700 rounded" draggable="false">80</div>
-                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Peta_Indonesia.svg" alt="Peta" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/7/7a/Peta_Indonesia.svg" class="sticker-option h-20 w-20 object-contain cursor-pointer p-2 hover:bg-gray-100 rounded" draggable="false">
                     <div class="sticker-option h-20 w-20 flex items-center justify-center bg-white text-red-600 border border-red-600 font-bold cursor-pointer p-2 hover:bg-red-50 rounded" draggable="false">MERDEKA</div>
                     <div class="sticker-option h-20 w-20 flex items-center justify-center bg-yellow-400 text-black font-bold cursor-pointer p-2 hover:bg-yellow-500 rounded" draggable="false">1945-2025</div>
                 </div>
-                
                 <div class="mt-6">
                     <h3 class="text-xl font-semibold mb-4 text-gray-800">Filter Foto</h3>
                     <div class="grid grid-cols-2 gap-3">
@@ -125,7 +82,6 @@
                         <button class="filter-btn bg-blue-100 hover:bg-blue-200 py-2 px-4 rounded" data-filter="blackwhite">Hitam Putih</button>
                     </div>
                 </div>
-                
                 <div class="mt-6">
                     <h3 class="text-xl font-semibold mb-4 text-gray-800">Download Foto</h3>
                     <button id="downloadBtn" class="w-full bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-4 rounded shadow-lg transition-all">
@@ -134,8 +90,6 @@
                 </div>
             </div>
         </main>
-        
-        <!-- Footer -->
         <footer class="mt-12 text-center text-gray-600">
             <p>Dirgahayu Republik Indonesia ke-80 | 17 Agustus 2025 | Merdeka!</p>
         </footer>
@@ -143,7 +97,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Elements
             const videoElement = document.getElementById('videoElement');
             const canvasElement = document.getElementById('canvasElement');
             const photoResult = document.getElementById('photoResult');
@@ -153,167 +106,109 @@
             const photoGrid = document.getElementById('photoGrid');
             const stickerOptions = document.querySelectorAll('.sticker-option');
             const filterButtons = document.querySelectorAll('.filter-btn');
-            
+
             let currentStream = null;
-            let facingMode = 'user'; // front camera by default
+            let facingMode = 'user';
             let currentPhoto = null;
             let stickers = [];
             let currentFilter = 'none';
-            
-            // Initialize camera
+
             function initCamera() {
-                if (currentStream) {
-                    currentStream.getTracks().forEach(track => track.stop());
-                }
-                
-                const constraints = {
-                    video: {
-                        facingMode: facingMode,
-                        width: { ideal: 1280 },
-                        height: { ideal: 720 }
-                    },
+                if (currentStream) currentStream.getTracks().forEach(track => track.stop());
+                navigator.mediaDevices.getUserMedia({
+                    video: { facingMode: facingMode, width: { ideal: 1280 }, height: { ideal: 720 } },
                     audio: false
-                };
-                
-                navigator.mediaDevices.getUserMedia(constraints)
-                    .then(function(stream) {
-                        currentStream = stream;
-                        videoElement.srcObject = stream;
-                    })
-                    .catch(function(err) {
-                        console.error("Error accessing camera: ", err);
-                        alert("Tidak dapat mengakses kamera. Pastikan Anda memberikan izin.");
-                    });
+                })
+                .then(stream => { currentStream = stream; videoElement.srcObject = stream; })
+                .catch(err => alert("Tidak dapat mengakses kamera: " + err));
             }
-            
-            // Capture photo
-            function capturePhoto() {
-                const cameraContainer = document.getElementById('cameraContainer');
-                cameraContainer.classList.add('capture-animation');
-                
-                setTimeout(() => {
-                    const context = canvasElement.getContext('2d');
-                    const width = videoElement.videoWidth;
-                    const height = videoElement.videoHeight;
-                    
-                    // Set canvas dimensions
-                    canvasElement.width = width;
-                    canvasElement.height = height;
-                    
-                    // Draw video frame to canvas
-                    context.drawImage(videoElement, 0, 0, width, height);
-                    
-                    // Apply filter
-                    applyFilter(context, width, height);
-                    
-                    // Hide video, show canvas
-                    videoElement.classList.add('hidden');
-                    photoResult.innerHTML = '';
-                    photoResult.appendChild(canvasElement);
-                    photoResult.classList.remove('hidden');
-                    
-                    // Add stickers to the result
-                    stickers.forEach(sticker => {
-                        const img = new Image();
-                        img.src = sticker.src;
-                        img.onload = function() {
-                            context.drawImage(
-                                img, 
-                                sticker.x * (width / cameraContainer.offsetWidth), 
-                                sticker.y * (height / cameraContainer.offsetHeight), 
-                                sticker.width * (width / cameraContainer.offsetWidth), 
-                                sticker.height * (height / cameraContainer.offsetHeight)
-                            );
-                            
-                            // Update canvas with stickers
-                            photoResult.innerHTML = '';
-                            photoResult.appendChild(canvasElement);
-                        };
-                    });
-                    
-                    // Save to gallery
-                    saveToGallery(canvasElement.toDataURL('image/png'));
-                    
-                    cameraContainer.classList.remove('capture-animation');
-                }, 100);
-            }
-            
-            // Apply filter to photo
+
             function applyFilter(context, width, height) {
                 const imageData = context.getImageData(0, 0, width, height);
                 const data = imageData.data;
-                
                 if (currentFilter === 'merah-putih') {
-                    // Red-white filter (boost red and white)
                     for (let i = 0; i < data.length; i += 4) {
                         const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-                        if (avg > 180) {
-                            // Make bright areas white
-                            data[i] = 255;     // R
-                            data[i + 1] = 255; // G
-                            data[i + 2] = 255; // B
-                        } else if (avg > 100) {
-                            // Make midtones red
-                            data[i] = 230;     // R
-                            data[i + 1] = 50;  // G
-                            data[i + 2] = 50;  // B
-                        } else {
-                            // Make dark areas darker red
-                            data[i] = 150;     // R
-                            data[i + 1] = 0;   // G
-                            data[i + 2] = 0;   // B
-                        }
+                        if (avg > 180) { data[i] = 255; data[i+1] = 255; data[i+2] = 255; }
+                        else if (avg > 100) { data[i] = 230; data[i+1] = 50; data[i+2] = 50; }
+                        else { data[i] = 150; data[i+1] = 0; data[i+2] = 0; }
                     }
                 } else if (currentFilter === 'vintage') {
-                    // Vintage sepia filter
                     for (let i = 0; i < data.length; i += 4) {
-                        const r = data[i];
-                        const g = data[i + 1];
-                        const b = data[i + 2];
-                        
-                        data[i] = Math.min(255, (r * 0.393) + (g * 0.769) + (b * 0.189));
-                        data[i + 1] = Math.min(255, (r * 0.349) + (g * 0.686) + (b * 0.168));
-                        data[i + 2] = Math.min(255, (r * 0.272) + (g * 0.534) + (b * 0.131));
-                        
-                        // Add some noise
-                        const noise = Math.random() * 30 - 15;
-                        data[i] += noise;
-                        data[i + 1] += noise;
-                        data[i + 2] += noise;
+                        const r = data[i], g = data[i+1], b = data[i+2];
+                        data[i] = Math.min(255, r*0.393 + g*0.769 + b*0.189);
+                        data[i+1] = Math.min(255, r*0.349 + g*0.686 + b*0.168);
+                        data[i+2] = Math.min(255, r*0.272 + g*0.534 + b*0.131);
                     }
                 } else if (currentFilter === 'blackwhite') {
-                    // Black and white filter
                     for (let i = 0; i < data.length; i += 4) {
-                        const avg = (data[i] + data[i + 1] + data[i + 2]) / 3;
-                        data[i] = avg;     // R
-                        data[i + 1] = avg; // G
-                        data[i + 2] = avg; // B
+                        const avg = (data[i] + data[i+1] + data[i+2]) / 3;
+                        data[i] = avg; data[i+1] = avg; data[i+2] = avg;
                     }
                 }
-                
                 context.putImageData(imageData, 0, 0);
             }
-            
-            // Save photo to gallery
+
+            function capturePhoto() {
+                const cameraContainer = document.getElementById('cameraContainer');
+                cameraContainer.classList.add('capture-animation');
+                setTimeout(() => {
+                    const ctx = canvasElement.getContext('2d');
+                    const width = videoElement.videoWidth;
+                    const height = videoElement.videoHeight;
+                    canvasElement.width = width;
+                    canvasElement.height = height;
+                    ctx.drawImage(videoElement, 0, 0, width, height);
+                    applyFilter(ctx, width, height);
+
+                    // Ornamen Merah Putih
+                    ctx.fillStyle = '#e70000';
+                    ctx.fillRect(0, 0, width, 50);
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0, height - 50, width, 50);
+
+                    // Logo HUT RI 80
+                    const ornament = new Image();
+                    ornament.src = 'logo80.png'; // file logo kamu
+                    ornament.onload = function() {
+                        const oWidth = width * 0.25;
+                        const oHeight = oWidth * (ornament.height / ornament.width);
+                        ctx.drawImage(ornament, width - oWidth - 20, height - oHeight - 20, oWidth, oHeight);
+
+                        // Stiker custom
+                        stickers.forEach(sticker => {
+                            const img = new Image();
+                            img.src = sticker.src;
+                            img.onload = () => {
+                                ctx.drawImage(
+                                    img, 
+                                    sticker.x * (width / cameraContainer.offsetWidth), 
+                                    sticker.y * (height / cameraContainer.offsetHeight), 
+                                    sticker.width * (width / cameraContainer.offsetWidth), 
+                                    sticker.height * (height / cameraContainer.offsetHeight)
+                                );
+                            };
+                        });
+
+                        saveToGallery(canvasElement.toDataURL('image/png'));
+                    };
+
+                    cameraContainer.classList.remove('capture-animation');
+                }, 100);
+            }
+
             function saveToGallery(imageData) {
                 const photoItem = document.createElement('div');
                 photoItem.className = 'relative group';
-                
                 const img = document.createElement('img');
                 img.src = imageData;
                 img.className = 'w-full h-auto rounded-lg shadow';
-                
                 const deleteBtn = document.createElement('button');
                 deleteBtn.className = 'absolute top-2 right-2 bg-red-600 text-white p-1 rounded-full opacity-0 group-hover:opacity-100 transition-opacity';
                 deleteBtn.innerHTML = '<i class="fas fa-trash text-xs"></i>';
-                deleteBtn.addEventListener('click', function(e) {
-                    e.stopPropagation();
-                    photoItem.remove();
-                });
-                
+                deleteBtn.addEventListener('click', e => { e.stopPropagation(); photoItem.remove(); });
                 photoItem.appendChild(img);
                 photoItem.appendChild(deleteBtn);
-                
                 photoItem.addEventListener('click', function() {
                     currentPhoto = imageData;
                     photoResult.innerHTML = '';
@@ -322,18 +217,12 @@
                     photoResult.classList.remove('hidden');
                     videoElement.classList.add('hidden');
                 });
-                
                 photoGrid.insertBefore(photoItem, photoGrid.firstChild);
                 currentPhoto = imageData;
             }
-            
-            // Download photo
+
             function downloadPhoto() {
-                if (!currentPhoto) {
-                    alert('Tidak ada foto yang tersedia untuk didownload. Ambil foto terlebih dahulu.');
-                    return;
-                }
-                
+                if (!currentPhoto) return alert('Ambil foto dulu!');
                 const link = document.createElement('a');
                 link.href = currentPhoto;
                 link.download = `HUT-RI-80-${new Date().toISOString().slice(0, 10)}.png`;
@@ -341,124 +230,74 @@
                 link.click();
                 document.body.removeChild(link);
             }
-            
-            // Toggle camera (front/back)
+
             function toggleCamera() {
                 facingMode = facingMode === 'user' ? 'environment' : 'user';
                 initCamera();
             }
-            
-            // Add sticker to camera view
+
             function addStickerToView(src, width, height) {
                 const cameraContainer = document.getElementById('cameraContainer');
                 const sticker = document.createElement('div');
                 sticker.className = 'sticker';
-                
                 const img = document.createElement('img');
                 img.src = src;
                 img.className = 'w-full h-full object-contain';
-                
                 sticker.appendChild(img);
                 sticker.style.width = `${width}px`;
                 sticker.style.height = `${height}px`;
-                
-                // Position randomly within the container
                 const maxX = cameraContainer.offsetWidth - width;
                 const maxY = cameraContainer.offsetHeight - height;
                 const randomX = Math.floor(Math.random() * maxX);
                 const randomY = Math.floor(Math.random() * maxY);
-                
                 sticker.style.left = `${randomX}px`;
                 sticker.style.top = `${randomY}px`;
-                
-                // Make draggable
-                let posX = 0, posY = 0, mouseX = 0, mouseY = 0;
-                
+                let posX = 0, posY = 0;
                 sticker.addEventListener('mousedown', function(e) {
                     e.preventDefault();
                     posX = e.clientX - sticker.getBoundingClientRect().left;
                     posY = e.clientY - sticker.getBoundingClientRect().top;
-                    
                     document.addEventListener('mousemove', moveSticker);
                     document.addEventListener('mouseup', function() {
                         document.removeEventListener('mousemove', moveSticker);
-                        
-                        // Save sticker position for capture
-                        stickers.push({
-                            src: src,
-                            x: parseFloat(sticker.style.left),
-                            y: parseFloat(sticker.style.top),
-                            width: width,
-                            height: height
-                        });
+                        stickers.push({ src: src, x: parseFloat(sticker.style.left), y: parseFloat(sticker.style.top), width: width, height: height });
                     });
                 });
-                
                 function moveSticker(e) {
-                    mouseX = e.clientX - posX - cameraContainer.getBoundingClientRect().left;
-                    mouseY = e.clientY - posY - cameraContainer.getBoundingClientRect().top;
-                    
-                    // Constrain to container
+                    let mouseX = e.clientX - posX - cameraContainer.getBoundingClientRect().left;
+                    let mouseY = e.clientY - posY - cameraContainer.getBoundingClientRect().top;
                     mouseX = Math.max(0, Math.min(mouseX, cameraContainer.offsetWidth - width));
                     mouseY = Math.max(0, Math.min(mouseY, cameraContainer.offsetHeight - height));
-                    
                     sticker.style.left = `${mouseX}px`;
                     sticker.style.top = `${mouseY}px`;
                 }
-                
                 cameraContainer.appendChild(sticker);
-                
-                // Save initial position
-                stickers.push({
-                    src: src,
-                    x: randomX,
-                    y: randomY,
-                    width: width,
-                    height: height
-                });
+                stickers.push({ src: src, x: randomX, y: randomY, width: width, height: height });
             }
-            
-            // Event Listeners
+
             captureBtn.addEventListener('click', capturePhoto);
             toggleCameraBtn.addEventListener('click', toggleCamera);
             downloadBtn.addEventListener('click', downloadPhoto);
-            
-            // Sticker options
             stickerOptions.forEach(option => {
                 option.addEventListener('click', function() {
                     if (this.tagName === 'IMG') {
                         addStickerToView(this.src, 80, 80);
                     } else {
-                        // For text stickers, create a canvas
                         const canvas = document.createElement('canvas');
                         canvas.width = 160;
                         canvas.height = 160;
                         const ctx = canvas.getContext('2d');
-                        
-                        // Get background color
-                        const bgColor = window.getComputedStyle(this).backgroundColor;
-                        
-                        // Draw background
-                        ctx.fillStyle = bgColor;
+                        ctx.fillStyle = window.getComputedStyle(this).backgroundColor;
                         ctx.fillRect(0, 0, canvas.width, canvas.height);
-                        
-                        // Draw text
                         ctx.font = 'bold 40px Arial';
                         ctx.textAlign = 'center';
                         ctx.textBaseline = 'middle';
-                        
-                        // Get text color
-                        const textColor = window.getComputedStyle(this).color;
-                        ctx.fillStyle = textColor;
-                        
+                        ctx.fillStyle = window.getComputedStyle(this).color;
                         ctx.fillText(this.textContent, canvas.width/2, canvas.height/2);
-                        
                         addStickerToView(canvas.toDataURL(), 80, 80);
                     }
                 });
             });
-            
-            // Filter buttons
             filterButtons.forEach(button => {
                 button.addEventListener('click', function() {
                     currentFilter = this.dataset.filter;
@@ -466,14 +305,10 @@
                     this.classList.add('ring-2', 'ring-red-600');
                 });
             });
-            
-            // Show camera again after taking photo
             photoResult.addEventListener('click', function() {
                 photoResult.classList.add('hidden');
                 videoElement.classList.remove('hidden');
             });
-            
-            // Initialize camera on load
             initCamera();
         });
     </script>
