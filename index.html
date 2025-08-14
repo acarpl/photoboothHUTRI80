@@ -244,13 +244,23 @@
                 canvas.height = video.videoHeight;
                 context.drawImage(video, 0, 0, canvas.width, canvas.height);
                 
+                // Show photo preview for 15 seconds
+                video.classList.add('hidden');
+                canvas.classList.remove('hidden');
+                
                 // Show download button
                 downloadButton.classList.remove('hidden');
-                startButton.disabled = false;
                 
                 // Create celebration effects
                 createConfetti();
                 createFireworks();
+                
+                // Reset after 15 seconds
+                setTimeout(() => {
+                    canvas.classList.add('hidden');
+                    video.classList.remove('hidden');
+                    startButton.disabled = false;
+                }, 15000);
             }
             
             // Download photo with frame
@@ -259,6 +269,9 @@
                     // Hide buttons temporarily
                     startButton.classList.add('hidden');
                     downloadButton.classList.add('hidden');
+                    
+                    // Clear any pending reset timeout
+                    clearTimeout(window.photoPreviewTimeout);
                     
                     // Use html2canvas to capture the entire frame
                     const container = document.querySelector('#camera-container');
