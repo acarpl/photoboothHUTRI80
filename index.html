@@ -3,33 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Photobox HUT RI ke-80 RT 004/RW 008</title>
+    <title>Photobox Kemerdekaan Indonesia ke-80 | RT 004/RW 008</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@700&display=swap');
         
         body {
-            font-family: 'Poppins', sans-serif;
+            font-family: 'Montserrat', sans-serif;
             background-color: #f8f8f8;
             overflow-x: hidden;
         }
         
-        .independence-bg {
-            background: linear-gradient(135deg, #e60000 0%, #ffffff 50%, #e60000 100%);
-            background-size: 200% 200%;
-            animation: gradientBG 10s ease infinite;
-        }
-        
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+        .title-font {
+            font-family: 'Poppins', sans-serif;
         }
         
         .flag-animation {
             animation: wave 3s ease-in-out infinite alternate;
-            transform-origin: top left;
         }
         
         @keyframes wave {
@@ -37,296 +28,290 @@
             100% { transform: rotate(2deg); }
         }
         
-        .countdown {
-            font-size: 10rem;
-            text-shadow: 0 0 10px rgba(255, 215, 0, 0.8);
-            animation: pulse 1s infinite alternate;
-        }
-        
-        @keyframes pulse {
-            0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(1.1); opacity: 0.8; }
-        }
-        
-        .photo-frame {
-            border: 15px solid #e60000;
-            border-image: linear-gradient(45deg, #e60000, #ffffff, #e60000) 30;
-            box-shadow: 0 0 30px rgba(230, 0, 0, 0.5);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .photo-frame::before {
-            content: "";
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect width="100" height="100" fill="none" stroke="gold" stroke-width="2"/></svg>');
-            opacity: 0.1;
-            pointer-events: none;
-        }
-        
         .confetti {
             position: absolute;
             width: 10px;
             height: 10px;
-            background-color: #e60000;
+            background-color: #f00;
             opacity: 0;
-        }
-        
-        @keyframes confetti-fall {
-            0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
-            100% { transform: translateY(1000px) rotate(360deg); opacity: 0; }
         }
         
         .garuda {
-            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.7));
         }
         
-        .firework {
-            position: absolute;
-            width: 5px;
-            height: 5px;
-            border-radius: 50%;
-            box-shadow: 0 0 10px 5px rgba(255, 255, 255, 0.8);
-            animation: firework-explode 1s ease-out forwards;
-            opacity: 0;
+        .photo-frame {
+            box-shadow: 0 0 0 10px #fff, 0 0 0 15px #c00, 0 0 0 25px #fff, 0 0 0 30px #c00;
         }
         
-        @keyframes firework-explode {
+        .countdown {
+            font-size: 10rem;
+            text-shadow: 0 0 10px rgba(255, 255, 255, 0.8);
+            animation: pulse 1s infinite;
+        }
+        
+        @keyframes pulse {
             0% { transform: scale(1); opacity: 1; }
-            100% { transform: scale(20); opacity: 0; }
+            50% { transform: scale(1.1); opacity: 0.8; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+        
+        #videoElement {
+            transform: scaleX(-1); /* Mirror effect */
+        }
+        
+        .hero-pattern {
+            background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23c00' fill-opacity='0.1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
         }
     </style>
 </head>
-<body class="independence-bg min-h-screen flex flex-col items-center justify-center p-4">
+<body class="hero-pattern min-h-screen flex flex-col items-center justify-center p-4">
     <div class="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-        <!-- Decorations -->
-        <div class="absolute top-10 left-10 text-6xl text-white font-bold opacity-20">80</div>
-        <div class="absolute bottom-10 right-10 text-6xl text-white font-bold opacity-20">80</div>
-        
-        <!-- Flags -->
-        <div class="absolute top-20 right-20 flag-animation">
-            <div class="w-16 h-10 bg-red-600"></div>
-            <div class="w-16 h-10 bg-white"></div>
+        <!-- Background elements -->
+        <div class="absolute top-10 left-10 flag-animation">
+            <svg width="80" height="60" viewBox="0 0 80 60">
+                <rect width="80" height="30" fill="#c00"/>
+                <rect y="30" width="80" height="30" fill="#fff"/>
+            </svg>
         </div>
-        
-        <div class="absolute bottom-20 left-20 flag-animation" style="animation-delay: 0.5s;">
-            <div class="w-16 h-10 bg-red-600"></div>
-            <div class="w-16 h-10 bg-white"></div>
+        <div class="absolute top-20 right-20 flag-animation" style="animation-delay: 0.5s;">
+            <svg width="60" height="40" viewBox="0 0 60 40">
+                <rect width="60" height="20" fill="#c00"/>
+                <rect y="20" width="60" height="20" fill="#fff"/>
+            </svg>
+        </div>
+        <div class="absolute bottom-10 right-10 flag-animation" style="animation-delay: 1s;">
+            <svg width="100" height="70" viewBox="0 0 100 70">
+                <rect width="100" height="35" fill="#c00"/>
+                <rect y="35" width="100" height="35" fill="#fff"/>
+            </svg>
         </div>
         
         <!-- Garuda -->
-        <div class="absolute top-1/2 left-1/4 transform -translate-x-1/2 -translate-y-1/2 garuda">
-            <svg width="60" height="60" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M12 2L15 8H21L16 12L18 18L12 15L6 18L8 12L3 8H9L12 2Z" fill="gold" stroke="#e60000" stroke-width="1"/>
+        <div class="absolute top-1/4 left-1/4 garuda opacity-20 transform -rotate-12">
+            <svg width="120" height="120" viewBox="0 0 512 512">
+                <!-- Simplified Garuda Pancasila -->
+                <path fill="#FFD700" d="M256,0c141.4,0,256,114.6,256,256S397.4,512,256,512S0,397.4,0,256S114.6,0,256,0z"/>
+                <path fill="#8B0000" d="M256,40c119.3,0,216,96.7,216,216S375.3,472,256,472S40,375.3,40,256S136.7,40,256,40z"/>
+                <path fill="#FFD700" d="M256,80c97.2,0,176,78.8,176,176s-78.8,176-176,176S80,353.2,80,256S158.8,80,256,80z"/>
+                <path fill="#8B0000" d="M256,120c75.1,0,136,60.9,136,136s-60.9,136-136,136S120,331.1,120,256S180.9,120,256,120z"/>
             </svg>
         </div>
+        
+        <!-- Number 80 -->
+        <div class="absolute top-1/2 right-1/4 transform translate-x-1/2 -translate-y-1/2 opacity-10">
+            <span class="text-9xl font-bold text-red-600">80</span>
+        </div>
     </div>
-    
-    <main class="z-10 w-full max-w-4xl bg-white bg-opacity-90 rounded-xl shadow-2xl overflow-hidden backdrop-blur-sm">
-        <div class="p-6 text-center">
-            <h1 class="text-4xl font-bold text-red-600 mb-2">PHOTOBOX HUT RI</h1>
-            <h2 class="text-2xl font-semibold text-gray-800 mb-6">RT 004/RW 008</h2>
-            
-            <div class="relative">
-                <!-- Camera View -->
-                <div id="cameraView" class="photo-frame mx-auto w-full max-w-lg aspect-video bg-gray-200 relative overflow-hidden">
-                    <video id="video" autoplay playsinline class="w-full h-full object-cover"></video>
-                    <canvas id="canvas" class="hidden"></canvas>
-                    
-                    <div id="countdown" class="hidden absolute inset-0 flex items-center justify-center bg-black bg-opacity-50 text-white">
-                        <span class="countdown">3</span>
-                    </div>
+
+    <main class="relative z-10 w-full max-w-4xl flex flex-col items-center">
+        <h1 class="title-font text-4xl md:text-5xl font-bold text-center mb-8 text-red-700">
+            PHOTOBOX KEMERDEKAAN
+        </h1>
+        
+        <div id="photoContainer" class="relative w-full max-w-lg mb-8">
+            <!-- Webcam view -->
+            <div id="cameraView" class="relative overflow-hidden rounded-lg bg-gray-200 aspect-[3/4] flex items-center justify-center">
+                <video id="videoElement" autoplay playsinline class="hidden w-full h-full object-cover"></video>
+                <canvas id="canvasElement" class="hidden w-full h-full object-cover"></canvas>
+                
+                <!-- Placeholder before camera starts -->
+                <div id="placeholder" class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-red-50 to-white p-4">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    <p class="text-center text-gray-700">Kamera siap untuk mengambil foto peringatan Kemerdekaan Indonesia ke-80</p>
                 </div>
                 
-                <!-- Photo Result -->
-                <div id="photoResult" class="hidden photo-frame mx-auto w-full max-w-lg aspect-video bg-gray-200 relative mt-6">
-                    <img id="photo" class="w-full h-full object-cover" src="" alt="Captured Photo">
-                    <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent p-4 text-white text-center">
-                        <div class="text-xl font-bold">Dirgahayu Republik Indonesia ke-80</div>
-                        <div class="text-sm">RT 004/RW 008</div>
-                    </div>
-                </div>
-                
-                <!-- Controls -->
-                <div class="mt-8 flex flex-col sm:flex-row justify-center gap-4">
-                    <button id="startButton" class="px-8 py-3 bg-red-600 hover:bg-red-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                        <i class="fas fa-camera"></i> Mulai Foto
-                    </button>
-                    
-                    <button id="retakeButton" class="hidden px-8 py-3 bg-gray-600 hover:bg-gray-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                        <i class="fas fa-redo"></i> Ambil Lagi
-                    </button>
-                    
-                    <button id="downloadButton" class="hidden px-8 py-3 bg-yellow-600 hover:bg-yellow-700 text-white font-bold rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
-                        <i class="fas fa-download"></i> Unduh Foto
-                    </button>
+                <!-- Countdown overlay -->
+                <div id="countdownOverlay" class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center hidden">
+                    <span id="countdownText" class="countdown text-white">3</span>
                 </div>
             </div>
             
-            <div class="mt-8 text-gray-700">
-                <p class="text-sm">Gunakan Photobox ini untuk mengabadikan momen spesial HUT RI ke-80</p>
-                <p class="text-xs mt-2">© 2024 RT 004/RW 008 - Panitia HUT RI ke-80</p>
+            <!-- Photo frame decoration -->
+            <div id="frameDecoration" class="photo-frame absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300"></div>
+            
+            <!-- Photo overlay elements -->
+            <div id="photoOverlay" class="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-300">
+                <!-- Top decoration -->
+                <div class="absolute top-0 left-0 right-0 flex justify-center pt-4">
+                    <div class="bg-red-600 text-white px-6 py-2 rounded-full shadow-lg">
+                        <h2 class="title-font text-xl md:text-2xl font-bold">DIRGAHAYU REPUBLIK INDONESIA</h2>
+                    </div>
+                </div>
+                
+                <!-- Bottom text -->
+                <div class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black to-transparent pb-4 pt-8 px-4 text-center">
+                    <p class="text-white text-xl md:text-2xl font-bold">KE-80</p>
+                    <p class="text-white text-lg">RT 004 / RW 008</p>
+                </div>
+                
+                <!-- Flag elements -->
+                <div class="absolute top-1/4 left-4 flag-animation">
+                    <svg width="60" height="40" viewBox="0 0 60 40">
+                        <rect width="60" height="20" fill="#c00"/>
+                        <rect y="20" width="60" height="20" fill="#fff"/>
+                    </svg>
+                </div>
+                
+                <div class="absolute top-1/3 right-4 flag-animation" style="animation-delay: 0.3s;">
+                    <svg width="50" height="30" viewBox="0 0 50 30">
+                        <rect width="50" height="15" fill="#c00"/>
+                        <rect y="15" width="50" height="15" fill="#fff"/>
+                    </svg>
+                </div>
+                
+                <!-- Confetti elements (will be added dynamically) -->
             </div>
         </div>
+        
+        <!-- Controls -->
+        <div class="flex flex-col sm:flex-row gap-4 w-full max-w-lg">
+            <button id="startButton" class="flex-1 bg-red-600 hover:bg-red-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition-all duration-300 flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+                MULAI FOTO
+            </button>
+            
+            <button id="downloadButton" class="flex-1 bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-4 px-6 rounded-lg shadow-md transition-all duration-300 flex items-center justify-center gap-2 opacity-0 pointer-events-none">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                </svg>
+                UNDUH FOTO
+            </button>
+        </div>
     </main>
+    
+    <footer class="mt-12 text-center text-gray-600 text-sm">
+        <p>© 2024 Photobox Kemerdekaan Indonesia ke-80 | RT 004/RW 008</p>
+    </footer>
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const video = document.getElementById('video');
-            const canvas = document.getElementById('canvas');
-            const photo = document.getElementById('photo');
+            const videoElement = document.getElementById('videoElement');
+            const canvasElement = document.getElementById('canvasElement');
             const startButton = document.getElementById('startButton');
-            const retakeButton = document.getElementById('retakeButton');
             const downloadButton = document.getElementById('downloadButton');
-            const cameraView = document.getElementById('cameraView');
-            const photoResult = document.getElementById('photoResult');
-            const countdown = document.getElementById('countdown');
-            const countdownNumber = countdown.querySelector('span');
-            
+            const placeholder = document.getElementById('placeholder');
+            const countdownOverlay = document.getElementById('countdownOverlay');
+            const countdownText = document.getElementById('countdownText');
+            const photoOverlay = document.getElementById('photoOverlay');
+            const frameDecoration = document.getElementById('frameDecoration');
             let stream = null;
-            let countdownInterval = null;
             
-            // Access camera
+            // Initialize camera
             async function initCamera() {
                 try {
-                    stream = await navigator.mediaDevices.getUserMedia({ 
-                        video: { 
-                            width: { ideal: 1280 },
-                            height: { ideal: 720 },
-                            facingMode: 'user' 
-                        }, 
-                        audio: false 
-                    });
-                    video.srcObject = stream;
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                    videoElement.srcObject = stream;
+                    videoElement.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
                 } catch (err) {
-                    console.error("Error accessing camera:", err);
-                    alert("Tidak dapat mengakses kamera. Pastikan Anda memberikan izin.");
+                    console.error("Error accessing camera: ", err);
+                    placeholder.innerHTML = `
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-red-500 mb-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z" />
+                        </svg>
+                        <p class="text-center text-gray-700">Akses kamera ditolak. Mohon izinkan akses kamera untuk menggunakan photobox ini.</p>
+                    `;
                 }
             }
             
             // Start countdown and take photo
             function startCountdown() {
-                let counter = 3;
-                countdownNumber.textContent = counter;
-                countdown.classList.remove('hidden');
+                let count = 3;
+                countdownOverlay.classList.remove('hidden');
+                countdownText.textContent = count;
                 
-                countdownInterval = setInterval(() => {
-                    counter--;
-                    countdownNumber.textContent = counter;
+                const timer = setInterval(() => {
+                    count--;
+                    countdownText.textContent = count;
                     
-                    if (counter <= 0) {
-                        clearInterval(countdownInterval);
+                    if (count <= 0) {
+                        clearInterval(timer);
+                        countdownOverlay.classList.add('hidden');
                         takePhoto();
                     }
                 }, 1000);
             }
             
-            // Take photo from video stream
+            // Take photo from webcam
             function takePhoto() {
-                countdown.classList.add('hidden');
+                const context = canvasElement.getContext('2d');
+                canvasElement.width = videoElement.videoWidth;
+                canvasElement.height = videoElement.videoHeight;
                 
-                const context = canvas.getContext('2d');
-                canvas.width = video.videoWidth;
-                canvas.height = video.videoHeight;
-                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                // Draw the current frame from the video on the canvas
+                context.drawImage(videoElement, 0, 0, canvasElement.width, canvasElement.height);
                 
-                const dataUrl = canvas.toDataURL('image/png');
-                photo.src = dataUrl;
+                // Hide video and show canvas
+                videoElement.classList.add('hidden');
+                canvasElement.classList.remove('hidden');
                 
-                // Show result and hide camera
-                cameraView.classList.add('hidden');
-                photoResult.classList.remove('hidden');
-                startButton.classList.add('hidden');
-                retakeButton.classList.remove('hidden');
-                downloadButton.classList.remove('hidden');
+                // Show photo overlay and frame
+                photoOverlay.classList.remove('opacity-0');
+                frameDecoration.classList.remove('opacity-0');
                 
-                // Create celebration effects
+                // Enable download button
+                downloadButton.classList.remove('opacity-0', 'pointer-events-none');
+                
+                // Create confetti effect
                 createConfetti();
-                createFireworks();
             }
             
-            // Retake photo
-            function retakePhoto() {
-                photoResult.classList.add('hidden');
-                cameraView.classList.remove('hidden');
-                retakeButton.classList.add('hidden');
-                downloadButton.classList.add('hidden');
-                startButton.classList.remove('hidden');
+            // Create confetti animation
+            function createConfetti() {
+                const colors = ['#c00', '#fff', '#ff0'];
+                const container = photoOverlay;
+                
+                for (let i = 0; i < 50; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + '%';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.borderRadius = Math.random() > 0.5 ? '50%' : '0';
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    container.appendChild(confetti);
+                    
+                    const animationDuration = Math.random() * 3 + 2;
+                    
+                    confetti.animate([
+                        { opacity: 0, transform: 'translateY(0) rotate(0deg)' },
+                        { opacity: 1, transform: `translateY(${Math.random() * 100 + 100}px) rotate(${Math.random() * 360}deg)` }
+                    ], {
+                        duration: animationDuration * 1000,
+                        easing: 'cubic-bezier(0.1, 0.8, 0.3, 1)',
+                        fill: 'forwards'
+                    });
+                }
             }
             
             // Download photo
             function downloadPhoto() {
-                const link = document.createElement('a');
-                link.download = 'Foto HUT RI ke-80 RT 004 RW 008.png';
-                link.href = photo.src;
-                link.click();
-            }
-            
-            // Create confetti effect
-            function createConfetti() {
-                const container = document.querySelector('body');
-                const colors = ['#e60000', '#ffffff', '#ffd700'];
-                
-                for (let i = 0; i < 100; i++) {
-                    const confetti = document.createElement('div');
-                    confetti.classList.add('confetti');
-                    confetti.style.left = Math.random() * 100 + 'vw';
-                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-                    confetti.style.animation = `confetti-fall ${Math.random() * 3 + 2}s linear forwards`;
-                    confetti.style.animationDelay = Math.random() * 2 + 's';
-                    
-                    container.appendChild(confetti);
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        confetti.remove();
-                    }, 5000);
-                }
-            }
-            
-            // Create fireworks effect
-            function createFireworks() {
-                const container = document.querySelector('body');
-                
-                for (let i = 0; i < 10; i++) {
-                    const firework = document.createElement('div');
-                    firework.classList.add('firework');
-                    firework.style.left = Math.random() * 100 + 'vw';
-                    firework.style.top = Math.random() * 100 + 'vh';
-                    firework.style.backgroundColor = i % 2 === 0 ? '#e60000' : '#ffffff';
-                    
-                    container.appendChild(firework);
-                    
-                    // Trigger animation
-                    setTimeout(() => {
-                        firework.style.animation = 'firework-explode 1s ease-out forwards';
-                    }, i * 300);
-                    
-                    // Remove after animation
-                    setTimeout(() => {
-                        firework.remove();
-                    }, 2000);
-                }
+                // Use html2canvas to capture the entire photo container with decorations
+                html2canvas(document.getElementById('photoContainer'), {
+                    backgroundColor: null,
+                    scale: 2 // Higher quality
+                }).then(canvas => {
+                    const link = document.createElement('a');
+                    link.download = 'Foto-Kemerdekaan-RT004-RW008-' + new Date().toISOString().slice(0, 10) + '.png';
+                    link.href = canvas.toDataURL('image/png');
+                    link.click();
+                });
             }
             
             // Event listeners
             startButton.addEventListener('click', startCountdown);
-            retakeButton.addEventListener('click', retakePhoto);
             downloadButton.addEventListener('click', downloadPhoto);
             
             // Initialize camera when page loads
             initCamera();
-            
-            // Clean up camera access when leaving page
-            window.addEventListener('beforeunload', () => {
-                if (stream) {
-                    stream.getTracks().forEach(track => track.stop());
-                }
-            });
         });
     </script>
 </body>
