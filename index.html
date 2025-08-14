@@ -1,96 +1,368 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Photobox Kemerdekaan RI ke-80</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Photobox Kemerdekaan RI ke-80 - RT 004/RW 008</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Poppins:wght@400;600&display=swap');
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            overflow-x: hidden;
+            background-color: #f8f8f8;
+        }
+        
+        .title-font {
+            font-family: 'Montserrat', sans-serif;
+        }
+        
+        .flag-animation {
+            animation: wave 3s ease-in-out infinite alternate;
+        }
+        
+        @keyframes wave {
+            0% { transform: rotate(0deg); }
+            50% { transform: rotate(5deg); }
+            100% { transform: rotate(-5deg); }
+        }
+        
+        .confetti {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            background-color: #f00;
+            opacity: 0;
+        }
+        
+        .firework {
+            position: absolute;
+            width: 4px;
+            height: 4px;
+            border-radius: 50%;
+            box-shadow: 0 0 10px 2px;
+            opacity: 0;
+        }
+        
+        .photo-frame {
+            box-shadow: 0 0 0 10px #fff, 0 0 0 15px #c00, 0 0 0 20px #fff, 0 0 0 25px #c00;
+        }
+        
+        .countdown {
+            font-size: 10rem;
+            text-shadow: 0 0 20px rgba(255, 215, 0, 0.8);
+            animation: pulse 1s infinite alternate;
+        }
+        
+        @keyframes pulse {
+            from { transform: scale(1); opacity: 1; }
+            to { transform: scale(1.1); opacity: 0.8; }
+        }
+        
+        .garuda {
+            filter: drop-shadow(0 0 5px rgba(255, 215, 0, 0.8));
+        }
+    </style>
 </head>
-<body class="bg-red-600 min-h-screen flex flex-col items-center justify-center p-4">
-
-  <!-- Area Photo -->
-  <div id="photobox" class="relative w-full max-w-3xl aspect-video bg-white rounded-xl overflow-hidden shadow-xl border-8 border-white">
-    <video id="video" autoplay playsinline class="absolute inset-0 w-full h-full object-cover"></video>
-
-    <!-- Ornamen -->
-    <img src="https://upload.wikimedia.org/wikipedia/commons/9/9f/Flag_of_Indonesia.svg" 
-         class="absolute top-4 left-4 w-24 drop-shadow-lg" alt="Bendera">
-    <img src="https://upload.wikimedia.org/wikipedia/commons/1/16/Garuda_Pancasila_emblem.svg" 
-         class="absolute top-4 right-4 w-20 drop-shadow-lg" alt="Garuda">
-    
-    <!-- Bingkai bawah -->
-    <div class="absolute bottom-0 w-full bg-gradient-to-t from-red-800/90 to-transparent text-center p-4">
-      <h1 class="text-white text-2xl font-bold">Dirgahayu Republik Indonesia ke-80</h1>
-      <p class="text-white font-semibold">RT 004 / RW 008</p>
+<body class="bg-gray-100">
+    <div class="min-h-screen flex flex-col items-center justify-center p-4 relative overflow-hidden">
+        <!-- Background Elements -->
+        <div class="absolute inset-0 overflow-hidden z-0">
+            <div class="absolute top-10 left-10 flag-animation">
+                <div class="w-16 h-10 bg-red-600"></div>
+                <div class="w-16 h-10 bg-white"></div>
+            </div>
+            <div class="absolute top-20 right-10 flag-animation" style="animation-delay: 0.5s;">
+                <div class="w-16 h-10 bg-red-600"></div>
+                <div class="w-16 h-10 bg-white"></div>
+            </div>
+            <div class="absolute bottom-10 left-20 flag-animation" style="animation-delay: 1s;">
+                <div class="w-16 h-10 bg-red-600"></div>
+                <div class="w-16 h-10 bg-white"></div>
+            </div>
+            <div class="absolute bottom-20 right-20 flag-animation" style="animation-delay: 1.5s;">
+                <div class="w-16 h-10 bg-red-600"></div>
+                <div class="w-16 h-10 bg-white"></div>
+            </div>
+            
+            <!-- Number 80 -->
+            <div class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 opacity-10 z-0">
+                <div class="text-9xl md:text-[20rem] font-bold text-red-600 title-font">80</div>
+            </div>
+            
+            <!-- Garuda -->
+            <div class="absolute top-8 right-8 garuda z-0 opacity-20">
+                <svg width="80" height="80" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M12 2L14 8H20L15 12L17 18L12 15L7 18L9 12L4 8H10L12 2Z" fill="#FFD700"/>
+                </svg>
+            </div>
+        </div>
+        
+        <!-- Main Content -->
+        <div class="relative z-10 w-full max-w-4xl flex flex-col items-center">
+            <h1 class="text-3xl md:text-5xl font-bold text-red-600 mb-2 title-font">PHOTOBOX KEMERDEKAAN</h1>
+            <h2 class="text-xl md:text-2xl font-semibold text-gray-800 mb-8">HUT RI ke-80 RT 004/RW 008</h2>
+            
+            <!-- Camera Preview -->
+            <div class="relative mb-8 w-full max-w-2xl">
+                <div id="camera-container" class="hidden relative photo-frame bg-white rounded-lg overflow-hidden">
+                    <video id="video" autoplay playsinline class="w-full h-auto"></video>
+                    <canvas id="canvas" class="hidden"></canvas>
+                    
+                    <!-- Frame Decorations -->
+                    <div class="absolute top-0 left-0 right-0 p-4 bg-gradient-to-b from-black to-transparent">
+                        <div class="text-center text-white font-bold text-xl md:text-2xl title-font">
+                            DIRGAHAYU REPUBLIK INDONESIA
+                        </div>
+                        <div class="text-center text-yellow-300 font-bold text-2xl md:text-3xl title-font">
+                            KE-80
+                        </div>
+                    </div>
+                    
+                    <div class="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black to-transparent">
+                        <div class="text-center text-white font-bold text-lg md:text-xl">
+                            RT 004 / RW 008
+                        </div>
+                        <div class="text-center text-yellow-300 text-sm">
+                            #Indonesia80TahunMerdeka
+                        </div>
+                    </div>
+                    
+                    <!-- Side Decorations -->
+                    <div class="absolute top-1/4 -left-4 transform -rotate-90">
+                        <div class="flex">
+                            <div class="w-4 h-8 bg-red-600"></div>
+                            <div class="w-4 h-8 bg-white"></div>
+                        </div>
+                    </div>
+                    <div class="absolute top-1/4 -right-4 transform rotate-90">
+                        <div class="flex">
+                            <div class="w-4 h-8 bg-red-600"></div>
+                            <div class="w-4 h-8 bg-white"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Countdown -->
+                <div id="countdown" class="hidden absolute inset-0 flex items-center justify-center">
+                    <div class="countdown text-yellow-300">3</div>
+                </div>
+                
+                <!-- Placeholder when camera is off -->
+                <div id="placeholder" class="photo-frame bg-gray-200 rounded-lg overflow-hidden aspect-video flex items-center justify-center">
+                    <div class="text-center p-8">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 mx-auto text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                        </svg>
+                        <p class="mt-4 text-gray-600">Kamera siap untuk mengambil foto kemerdekaan!</p>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="flex flex-col sm:flex-row gap-4 w-full max-w-md">
+                <button id="startButton" class="bg-red-600 hover:bg-red-700 text-white font-bold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 9a2 2 0 012-2h.93a2 2 0 001.664-.89l.812-1.22A2 2 0 0110.07 4h3.86a2 2 0 011.664.89l.812 1.22A2 2 0 0018.07 7H19a2 2 0 012 2v9a2 2 0 01-2 2H5a2 2 0 01-2-2V9z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 13a3 3 0 11-6 0 3 3 0 016 0z" />
+                    </svg>
+                    MULAI FOTO
+                </button>
+                <button id="downloadButton" class="hidden bg-yellow-500 hover:bg-yellow-600 text-gray-800 font-bold py-3 px-6 rounded-full shadow-lg transition-all transform hover:scale-105 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                    </svg>
+                    UNDUH FOTO
+                </button>
+            </div>
+            
+            <!-- Instructions -->
+            <div class="mt-8 text-center text-gray-600 max-w-md">
+                <p>Gunakan Photobox ini untuk mengabadikan momen spesial HUT RI ke-80 bersama warga RT 004/RW 008.</p>
+                <p class="mt-2 text-sm">Pastikan Anda mengizinkan akses kamera saat diminta.</p>
+            </div>
+        </div>
+        
+        <!-- Confetti Container -->
+        <div id="confetti-container" class="absolute inset-0 pointer-events-none z-20 overflow-hidden"></div>
     </div>
 
-    <!-- Countdown -->
-    <div id="countdown" class="hidden absolute inset-0 flex items-center justify-center bg-black/50 text-white text-8xl font-bold"></div>
-  </div>
-
-  <!-- Tombol -->
-  <div class="mt-4 flex gap-4">
-    <button id="captureBtn" class="px-6 py-3 bg-white rounded-lg font-bold shadow-lg hover:bg-gray-200">📸 Mulai Foto</button>
-    <button id="downloadBtn" class="px-6 py-3 bg-yellow-400 rounded-lg font-bold shadow-lg hover:bg-yellow-500 hidden">⬇️ Unduh Foto</button>
-  </div>
-
-  <script>
-    const video = document.getElementById('video');
-    const captureBtn = document.getElementById('captureBtn');
-    const downloadBtn = document.getElementById('downloadBtn');
-    const photobox = document.getElementById('photobox');
-    const countdown = document.getElementById('countdown');
-
-    // Akses webcam
-    navigator.mediaDevices.getUserMedia({ video: true })
-      .then(stream => video.srcObject = stream)
-      .catch(err => alert('Gagal mengakses kamera: ' + err));
-
-    // Countdown sebelum foto
-    function startCountdown(cb) {
-      let count = 3;
-      countdown.textContent = count;
-      countdown.classList.remove('hidden');
-      const interval = setInterval(() => {
-        count--;
-        if (count > 0) {
-          countdown.textContent = count;
-        } else {
-          clearInterval(interval);
-          countdown.classList.add('hidden');
-          cb();
-        }
-      }, 1000);
-    }
-
-    // Ambil foto + ornamen
-    captureBtn.addEventListener('click', () => {
-      startCountdown(() => {
-        html2canvas(photobox).then(canvas => {
-          window.capturedImage = canvas.toDataURL('image/png');
-          video.style.display = 'none';
-          const imgPreview = document.createElement('img');
-          imgPreview.src = window.capturedImage;
-          imgPreview.className = 'absolute inset-0 w-full h-full object-cover';
-          photobox.appendChild(imgPreview);
-          downloadBtn.classList.remove('hidden');
-
-          // Confetti merah-putih
-          confetti({ particleCount: 150, spread: 80, origin: { y: 0.6 }, colors: ['#ff0000', '#ffffff'] });
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const video = document.getElementById('video');
+            const canvas = document.getElementById('canvas');
+            const startButton = document.getElementById('startButton');
+            const downloadButton = document.getElementById('downloadButton');
+            const countdown = document.getElementById('countdown');
+            const cameraContainer = document.getElementById('camera-container');
+            const placeholder = document.getElementById('placeholder');
+            const confettiContainer = document.getElementById('confetti-container');
+            
+            let stream = null;
+            let countdownInterval = null;
+            let currentCount = 3;
+            
+            // Initialize camera
+            async function initCamera() {
+                try {
+                    stream = await navigator.mediaDevices.getUserMedia({ video: true, audio: false });
+                    video.srcObject = stream;
+                    cameraContainer.classList.remove('hidden');
+                    placeholder.classList.add('hidden');
+                } catch (err) {
+                    console.error("Error accessing camera: ", err);
+                    alert("Tidak dapat mengakses kamera. Pastikan Anda memberikan izin.");
+                }
+            }
+            
+            // Start countdown and take photo
+            function startCountdown() {
+                startButton.disabled = true;
+                currentCount = 3;
+                countdown.querySelector('div').textContent = currentCount;
+                countdown.classList.remove('hidden');
+                
+                countdownInterval = setInterval(() => {
+                    currentCount--;
+                    countdown.querySelector('div').textContent = currentCount;
+                    
+                    if (currentCount <= 0) {
+                        clearInterval(countdownInterval);
+                        countdown.classList.add('hidden');
+                        takePhoto();
+                    }
+                }, 1000);
+            }
+            
+            // Take photo from video stream
+            function takePhoto() {
+                const context = canvas.getContext('2d');
+                canvas.width = video.videoWidth;
+                canvas.height = video.videoHeight;
+                context.drawImage(video, 0, 0, canvas.width, canvas.height);
+                
+                // Show download button
+                downloadButton.classList.remove('hidden');
+                startButton.disabled = false;
+                
+                // Create celebration effects
+                createConfetti();
+                createFireworks();
+            }
+            
+            // Download photo with frame
+            async function downloadPhoto() {
+                try {
+                    // Hide buttons temporarily
+                    startButton.classList.add('hidden');
+                    downloadButton.classList.add('hidden');
+                    
+                    // Use html2canvas to capture the entire frame
+                    const container = document.querySelector('#camera-container');
+                    
+                    const canvasResult = await html2canvas(container, {
+                        backgroundColor: null,
+                        scale: 2,
+                        logging: false,
+                        useCORS: true
+                    });
+                    
+                    // Create download link
+                    const link = document.createElement('a');
+                    link.download = 'Foto-Kemerdekaan-RI-80-RT004-RW008-' + new Date().getTime() + '.png';
+                    link.href = canvasResult.toDataURL('image/png');
+                    link.click();
+                    
+                    // Show buttons again
+                    startButton.classList.remove('hidden');
+                    downloadButton.classList.remove('hidden');
+                    
+                } catch (err) {
+                    console.error("Error generating photo: ", err);
+                    alert("Gagal menyimpan foto. Silakan coba lagi.");
+                }
+            }
+            
+            // Create confetti effect
+            function createConfetti() {
+                // Clear existing confetti
+                confettiContainer.innerHTML = '';
+                
+                const colors = ['#FF0000', '#FFFFFF', '#FFD700'];
+                
+                for (let i = 0; i < 100; i++) {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = -10 + 'px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+                    confetti.style.width = Math.random() * 10 + 5 + 'px';
+                    confetti.style.height = Math.random() * 5 + 3 + 'px';
+                    
+                    confettiContainer.appendChild(confetti);
+                    
+                    // Animate
+                    setTimeout(() => {
+                        confetti.style.opacity = '1';
+                        confetti.style.top = '100vh';
+                        confetti.style.left = Math.random() * 100 + 'vw';
+                        confetti.style.transition = 'all ' + (Math.random() * 3 + 2) + 's linear';
+                        
+                        // Remove after animation
+                        setTimeout(() => {
+                            confetti.remove();
+                        }, 5000);
+                    }, i * 50);
+                }
+            }
+            
+            // Create firework effects
+            function createFireworks() {
+                for (let i = 0; i < 20; i++) {
+                    setTimeout(() => {
+                        const firework = document.createElement('div');
+                        firework.className = 'firework';
+                        firework.style.left = Math.random() * 100 + 'vw';
+                        firework.style.top = Math.random() * 100 + 'vh';
+                        firework.style.backgroundColor = i % 2 === 0 ? '#FF0000' : '#FFFFFF';
+                        
+                        confettiContainer.appendChild(firework);
+                        
+                        // Animate
+                        setTimeout(() => {
+                            firework.style.opacity = '1';
+                            firework.style.boxShadow = '0 0 ' + (Math.random() * 20 + 10) + 'px ' + (Math.random() * 5 + 2) + 'px';
+                            firework.style.width = '0';
+                            firework.style.height = '0';
+                            firework.style.transition = 'all 0.5s ease-out';
+                            
+                            // Remove after animation
+                            setTimeout(() => {
+                                firework.remove();
+                            }, 1000);
+                        }, 10);
+                    }, i * 300);
+                }
+            }
+            
+            // Event listeners
+            startButton.addEventListener('click', startCountdown);
+            downloadButton.addEventListener('click', downloadPhoto);
+            
+            // Initialize on load
+            initCamera();
+            
+            // Clean up camera stream when leaving
+            window.addEventListener('beforeunload', () => {
+                if (stream) {
+                    stream.getTracks().forEach(track => track.stop());
+                }
+            });
         });
-      });
-    });
-
-    // Download foto
-    downloadBtn.addEventListener('click', () => {
-      const a = document.createElement('a');
-      a.href = window.capturedImage;
-      a.download = 'Photobox_HUTRI80.png';
-      a.click();
-    });
-  </script>
-
+    </script>
 </body>
 </html>
